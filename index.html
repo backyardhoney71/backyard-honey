@@ -660,11 +660,19 @@
         updateSeasonalBadge();
 
         // 2. ANNOUNCEMENT BAR
+        //const ANNOUNCEMENT_CONFIG = {
+            //text: "100% Pure Raw Honey • Unfiltered & Zero Added Sugars or Syrups",
+            //backgroundColor: '#f59e0b',
+            //textColor: '#1C1917',
+            //iconClass: 'fa-award'
+        //};
+
+        // 2. ANNOUNCEMENT BAR SOLD OUT
         const ANNOUNCEMENT_CONFIG = {
-            text: "100% Pure Raw Honey • Unfiltered & Zero Added Sugars or Syrups",
-            backgroundColor: '#f59e0b',
-            textColor: '#1C1917',
-            iconClass: 'fa-award'
+            text: "⚠️ CURRENTLY SOLD OUT • Next Fresh Honey Harvest Coming Soon!",
+            backgroundColor: '#dc2626', // Red
+            textColor: '#ffffff',       // White
+            iconClass: 'fa-ban'
         };
 
         const annBar = document.getElementById('announcement-bar');
