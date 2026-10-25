@@ -1,2 +1,1 @@
-- Create a YT/Video host to support higher quality long form videos for gallery
 - Setup account manager to be able to add remove videos without the requirement of doing it from the source code
