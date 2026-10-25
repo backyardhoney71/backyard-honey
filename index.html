@@ -78,6 +78,40 @@
         .dark .hero-overlay {
             background: linear-gradient(135deg, rgba(10,10,10,0.92) 0%, rgba(18,18,18,0.88) 100%);
         }
+        /* Custom Gallery Scrollbar Styling */
+        /* WebKit browsers (Chrome, Edge, Safari, Opera) */
+        .gallery-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .gallery-scrollbar::-webkit-scrollbar-track {
+            background: rgba(254, 243, 199, 0.5); /* Soft amber tint */
+            border-radius: 9999px;
+        }
+
+        .dark .gallery-scrollbar::-webkit-scrollbar-track {
+            background: rgba(30, 30, 30, 0.8); /* Dark background matching cards */
+            border-radius: 9999px;
+        }
+
+        .gallery-scrollbar::-webkit-scrollbar-thumb {
+            background: #f59e0b; /* Amber gold handle */
+            border-radius: 9999px;
+        }
+
+        .gallery-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #d97706; /* Darker amber on hover */
+        }
+
+        /* Firefox Support */
+        .gallery-scrollbar {
+            scrollbar-width: thin;
+            scrollbar-color: #f59e0b rgba(254, 243, 199, 0.5);
+        }
+
+        .dark .gallery-scrollbar {
+            scrollbar-color: #f59e0b rgba(30, 30, 30, 0.8);
+        }
     </style>
 </head>
 <body class="antialiased bg-cream text-charcoal dark:bg-darkbg dark:text-gray-100 selection:bg-amber-400 selection:text-charcoal">
@@ -473,58 +507,190 @@
             </div>
         </section>
 
-        <!-- Photo Gallery Section -->
+
+        <!-- Photo & Video Gallery Showcase (Self-Contained Scroll Box + Click to Enlarge) -->
         <section id="gallery" class="py-20 bg-hexagon-pattern border-t border-amber-200 dark:border-darkborder">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-16">
-                    <span class="text-amber-700 dark:text-amber-400 font-bold text-xs uppercase tracking-widest bg-amber-100 dark:bg-amber-900/40 px-3 py-1 rounded-full">Visual Journey</span>
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-amber-700 dark:text-amber-400 font-bold text-xs uppercase tracking-widest bg-amber-100 dark:bg-amber-900/40 px-3 py-1 rounded-full">
+                        <i class="fa-brands fa-facebook mr-1"></i> Visual & Video Journal
+                    </span>
                     <h2 class="font-serif text-3xl sm:text-5xl font-extrabold text-charcoal dark:text-gray-100 mt-3 mb-4">Backyard Honey Gallery</h2>
-                    <p class="text-charcoal/70 dark:text-gray-300 text-base sm:text-lg">A look into our local apiaries, fresh honeycomb harvests, and pure raw honey jars.</p>
+                    <p class="text-charcoal/70 dark:text-gray-300 text-base sm:text-lg">
+                        Explore our latest photos and videos. Click any photo to view full size!
+                    </p>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="group relative rounded-3xl overflow-hidden shadow-lg border border-amber-200 dark:border-darkborder h-72">
-                        <img src="hive1.jpg" 
-                             alt="Backyard Honey Apiary Hives" 
-                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                             onerror="this.src='https://images.unsplash.com/photo-1587049352847-4a222e784d38?auto=format&fit=crop&q=80&w=800'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                            <span class="text-white font-bold text-sm"><i class="fa-solid fa-house-chimney-window text-amber-400 mr-2"></i> WIP</span>
+                    <!-- Scrollable Gallery Container -->
+                    <div class="max-h-[36rem] overflow-y-auto p-3 sm:p-4 rounded-3xl border border-amber-200/80 dark:border-darkborder bg-cream/50 dark:bg-darkbg/50 backdrop-blur-sm shadow-inner gallery-scrollbar">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        
+                        <!-- Native Short Video -->
+                        <div class="group relative rounded-3xl overflow-hidden shadow-lg border border-amber-200 dark:border-darkborder bg-white dark:bg-darkcard min-h-[22rem] h-auto flex flex-col justify-between">
+                            <div class="relative h-52 overflow-hidden bg-charcoal shrink-0">
+                                <video controls preload="metadata" class="w-full h-full object-cover">
+                                    <source src="media/candle-pouring-mold-short.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <span class="absolute top-3 left-3 bg-blue-600 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow pointer-events-none z-10 flex items-center space-x-1">
+                                    <i class="fa-solid fa-video"></i>
+                                    <span>Video</span>
+                                </span>
+                                <span class="absolute top-3 right-3 bg-amber-500 text-charcoal text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full shadow pointer-events-none z-10 flex items-center space-x-1">
+                                    <i class="fa-solid fa-clock"></i>
+                                    <span>Short Video</span>
+                                </span>
+                            </div>
+                            <div class="p-5 flex flex-col justify-between flex-grow">
+                                <h3 class="font-serif font-bold text-sm sm:text-base text-charcoal dark:text-gray-100 leading-snug">Making Scented Beeswax Candle Using New Mold</h3>
+                                <a href="https://www.facebook.com/people/Backyard-Honey/61592085643779/" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center mt-3">
+                                    <span>View on Facebook</span> <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i>
+                                </a>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="group relative rounded-3xl overflow-hidden shadow-lg border border-amber-200 dark:border-darkborder h-72">
-                        <img src="hive2.jpg" 
-                             alt="Fresh Beeswax Honeycomb Frame" 
-                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                             onerror="this.src='https://images.unsplash.com/photo-1471943311424-646960669fbc?auto=format&fit=crop&q=80&w=800'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                            <span class="text-white font-bold text-sm"><i class="fa-solid fa-droplet text-amber-400 mr-2"></i> WIP</span>
+                        <!-- Native Short Video -->
+                        <div class="group relative rounded-3xl overflow-hidden shadow-lg border border-amber-200 dark:border-darkborder bg-white dark:bg-darkcard min-h-[22rem] h-auto flex flex-col justify-between">
+                            <div class="relative h-52 overflow-hidden bg-charcoal shrink-0">
+                                <video controls preload="metadata" class="w-full h-full object-cover">
+                                    <source src="media/on-site-apiary-hive-walkthrough.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <span class="absolute top-3 left-3 bg-blue-600 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow pointer-events-none z-10 flex items-center space-x-1">
+                                    <i class="fa-solid fa-video"></i>
+                                    <span>Video</span>
+                                </span>
+                                <span class="absolute top-3 right-3 bg-amber-500 text-charcoal text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full shadow pointer-events-none z-10 flex items-center space-x-1">
+                                    <i class="fa-solid fa-clock"></i>
+                                    <span>Short Video</span>
+                                </span>
+                            </div>
+                            <div class="p-5 flex flex-col justify-between flex-grow">
+                                <h3 class="font-serif font-bold text-sm sm:text-base text-charcoal dark:text-gray-100 leading-snug">On-Site Apiary Tour & Hive Health Check</h3>
+                                <a href="https://www.facebook.com/people/Backyard-Honey/61592085643779/" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center mt-3">
+                                    <span>View on Facebook</span> <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i>
+                                </a>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="group relative rounded-3xl overflow-hidden shadow-lg border border-amber-200 dark:border-darkborder h-72">
-                        <img src="hive3.jpg" 
-                             alt="Pure Raw Honey Drip" 
-                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                             onerror="this.src='https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=800'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                            <span class="text-white font-bold text-sm"><i class="fa-solid fa-jar text-amber-400 mr-2"></i> WIP</span>
+                        <!-- Native Long Video -->
+                        <div class="group relative rounded-3xl overflow-hidden shadow-lg border border-amber-200 dark:border-darkborder bg-white dark:bg-darkcard min-h-[22rem] h-auto flex flex-col justify-between">
+                            <div class="relative h-52 overflow-hidden bg-charcoal shrink-0">
+                                <video controls preload="metadata" class="w-full h-full object-cover">
+                                    <source src="media/on-site-beekeeping-hive-walkthrough-long.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <span class="absolute top-3 left-3 bg-blue-600 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow pointer-events-none z-10 flex items-center space-x-1">
+                                    <i class="fa-solid fa-video"></i>
+                                    <span>Video</span>
+                                </span>
+                                <span class="absolute top-3 right-3 bg-indigo-600 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full shadow pointer-events-none z-10 flex items-center space-x-1">
+                                    <i class="fa-solid fa-hourglass-half"></i>
+                                    <span>Long Video</span>
+                                </span>
+                            </div>
+                            <div class="p-5 flex flex-col justify-between flex-grow">
+                                <h3 class="font-serif font-bold text-sm sm:text-base text-charcoal dark:text-gray-100 leading-snug">Full Beekeeping Walkthrough & On-Site Hive Care</h3>
+                                <a href="https://www.facebook.com/people/Backyard-Honey/61592085643779/" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center mt-3">
+                                    <span>View on Facebook</span> <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i>
+                                </a>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="group relative rounded-3xl overflow-hidden shadow-lg border border-amber-200 dark:border-darkborder h-72">
-                        <img src="hive4.jpg" 
-                             alt="Backyard Honey Jar" 
-                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                             onerror="this.src='https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&q=80&w=800'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                            <span class="text-white font-bold text-sm"><i class="fa-solid fa-certificate text-amber-400 mr-2"></i> WIP</span>
+                        <!-- Photo Post 1 -->
+                        <div class="group relative rounded-3xl overflow-hidden shadow-lg border border-amber-200 dark:border-darkborder bg-white dark:bg-darkcard min-h-[22rem] h-auto flex flex-col justify-between">
+                            <div class="relative h-52 overflow-hidden bg-charcoal/5 dark:bg-black/20 shrink-0 cursor-pointer" onclick="openLightbox('media/pure-honey-advertisement-poster.jpg', 'Backyards Pure Honey Advert')">
+                                <img src="media/pure-honey-advertisement-poster.jpg" 
+                                     alt="Backyards Pure Honey Advert" 
+                                     class="w-full h-full object-contain p-1 group-hover:scale-105 transition-transform duration-300"
+                                     onerror="this.src='media/fallbackerror.jpg'">
+                                <span class="absolute top-3 left-3 bg-amber-500 text-charcoal text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow">
+                                    <i class="fa-solid fa-camera mr-1"></i> Photo
+                                </span>
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                                    <span class="bg-white/90 text-charcoal text-xs font-bold px-3 py-1.5 rounded-full shadow-md flex items-center">
+                                        <i class="fa-solid fa-magnifying-glass-plus mr-1.5 text-amber-600"></i> Click to expand
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-5 flex flex-col justify-between flex-grow">
+                                <h3 class="font-serif font-bold text-sm sm:text-base text-charcoal dark:text-gray-100 leading-snug">Backyard's Pure Honey Advert</h3>
+                                <a href="https://www.facebook.com/people/Backyard-Honey/61592085643779/" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center mt-3">
+                                    <span>View on Facebook</span> <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i>
+                                </a>
+                            </div>
                         </div>
+
+                        <!-- Photo Post 2 -->
+                        <div class="group relative rounded-3xl overflow-hidden shadow-lg border border-amber-200 dark:border-darkborder bg-white dark:bg-darkcard min-h-[22rem] h-auto flex flex-col justify-between">
+                            <div class="relative h-52 overflow-hidden bg-charcoal/5 dark:bg-black/20 shrink-0 cursor-pointer" onclick="openLightbox('media/handcrafted-beeswax-candles-showcase.jpg', 'A Few of Our New Candles')">
+                                <img src="media/handcrafted-beeswax-candles-showcase.jpg" 
+                                     alt="A Few of Our New Candles" 
+                                     class="w-full h-full object-contain p-1 group-hover:scale-105 transition-transform duration-300"
+                                     onerror="this.src='media/fallbackerror.jpg'">
+                                <span class="absolute top-3 left-3 bg-amber-500 text-charcoal text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow">
+                                    <i class="fa-solid fa-camera mr-1"></i> Photo
+                                </span>
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                                    <span class="bg-white/90 text-charcoal text-xs font-bold px-3 py-1.5 rounded-full shadow-md flex items-center">
+                                        <i class="fa-solid fa-magnifying-glass-plus mr-1.5 text-amber-600"></i> Click to expand
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-5 flex flex-col justify-between flex-grow">
+                                <h3 class="font-serif font-bold text-sm sm:text-base text-charcoal dark:text-gray-100 leading-snug">A Few of Our New Candles</h3>
+                                <a href="https://www.facebook.com/people/Backyard-Honey/61592085643779/" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center mt-3">
+                                    <span>View on Facebook</span> <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Photo Post 3 -->
+                        <div class="group relative rounded-3xl overflow-hidden shadow-lg border border-amber-200 dark:border-darkborder bg-white dark:bg-darkcard min-h-[22rem] h-auto flex flex-col justify-between">
+                            <div class="relative h-52 overflow-hidden bg-charcoal/5 dark:bg-black/20 shrink-0 cursor-pointer" onclick="openLightbox('media/beeswax-candles-trio-showcase.jpg', 'Handcrafted Beeswax Candles Trio')">
+                                <img src="media/beeswax-candles-trio-showcase.jpg" 
+                                     alt="Handcrafted Beeswax Candles Trio" 
+                                     class="w-full h-full object-contain p-1 group-hover:scale-105 transition-transform duration-300"
+                                     onerror="this.src='media/fallbackerror.jpg'">
+                                <span class="absolute top-3 left-3 bg-amber-500 text-charcoal text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow">
+                                    <i class="fa-solid fa-camera mr-1"></i> Photo
+                                </span>
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                                    <span class="bg-white/90 text-charcoal text-xs font-bold px-3 py-1.5 rounded-full shadow-md flex items-center">
+                                        <i class="fa-solid fa-magnifying-glass-plus mr-1.5 text-amber-600"></i> Click to expand
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-5 flex flex-col justify-between flex-grow">
+                                <h3 class="font-serif font-bold text-sm sm:text-base text-charcoal dark:text-gray-100 leading-snug">Handcrafted Beeswax Candles Trio</h3>
+                                <a href="https://www.facebook.com/people/Backyard-Honey/61592085643779/" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center mt-3">
+                                    <span>View on Facebook</span> <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i>
+                                </a>
+                            </div>
+                        </div>
+
                     </div>
+                </div>
+
+                <!-- Footer CTA -->
+                <div class="mt-10 text-center">
+                    <a href="https://www.facebook.com/people/Backyard-Honey/61592085643779/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-8 py-3.5 rounded-full font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-lg transition-all text-sm">
+                        <i class="fa-brands fa-facebook mr-2 text-base"></i> View Full Media Archive on Facebook
+                    </a>
                 </div>
             </div>
         </section>
+
+        <!-- Fullscreen Image Modal (Lightbox) -->
+        <div id="image-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4" onclick="closeLightbox()">
+            <div class="relative max-w-4xl max-h-[90vh] bg-white dark:bg-darkcard rounded-3xl p-3 shadow-2xl overflow-hidden flex flex-col items-center" onclick="event.stopPropagation()">
+                <button type="button" class="absolute top-4 right-4 text-charcoal dark:text-white bg-amber-100 dark:bg-darkborder hover:bg-amber-200 p-2.5 rounded-full shadow z-10 transition-colors" onclick="closeLightbox()">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+                <img id="modal-img" src="" alt="" class="max-h-[75vh] w-auto object-contain rounded-2xl">
+                <p id="modal-caption" class="font-serif font-bold text-sm sm:text-base text-charcoal dark:text-gray-100 mt-3 text-center px-4 mb-1"></p>
+            </div>
+        </div>
 
         <!-- Crystallization Explanation & Softening Guide -->
         <section class="py-16 bg-amber-500/10 dark:bg-amber-950/20 border-t border-amber-200 dark:border-darkborder">
@@ -659,14 +825,6 @@
         }
         updateSeasonalBadge();
 
-        // 2. ANNOUNCEMENT BAR
-        //const ANNOUNCEMENT_CONFIG = {
-            //text: "100% Pure Raw Honey • Unfiltered & Zero Added Sugars or Syrups",
-            //backgroundColor: '#f59e0b',
-            //textColor: '#1C1917',
-            //iconClass: 'fa-award'
-        //};
-
         // 2. ANNOUNCEMENT BAR SOLD OUT
         const ANNOUNCEMENT_CONFIG = {
             text: "⚠️ CURRENTLY SOLD OUT • Next Fresh Honey Harvest Coming Soon!",
@@ -790,6 +948,33 @@
                 icon.classList.toggle('rotate-180');
             });
         });
+
+        // 8. FULLSCREEN IMAGE LIGHTBOX WITH ERROR FALLBACK
+        function openLightbox(imgSrc, captionText) {
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-img');
+            const modalCaption = document.getElementById('modal-caption');
+            
+            // Clear any previous error states and set source
+            modalImg.onerror = null;
+            modalImg.src = imgSrc;
+            modalCaption.textContent = captionText;
+
+            // If the image fails to load, swap to the fallback error image and show warning text
+            modalImg.onerror = function() {
+                modalImg.src = 'media/fallbackerror.jpg'; // Make sure this matches your saved file name in the media folder!
+                modalCaption.innerHTML = captionText + '<br><span class="text-red-600 dark:text-red-400 font-semibold text-xs mt-1 block">ERROR: Please report to website designer</span>';
+            };
+
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // prevent page scrolling while modal is open
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('image-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
     </script>
 </body>
 </html>
