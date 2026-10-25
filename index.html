@@ -574,12 +574,23 @@
                         </div>
 
                         <!-- Native Long Video -->
+                        <!-- Native Long Video (Lightbox Modal Trigger) -->
                         <div class="group relative rounded-3xl overflow-hidden shadow-lg border border-amber-200 dark:border-darkborder bg-white dark:bg-darkcard min-h-[22rem] h-auto flex flex-col justify-between">
-                            <div class="relative h-52 overflow-hidden bg-charcoal shrink-0">
-                                <video controls preload="metadata" class="w-full h-full object-cover">
-                                    <source src="media/on-site-beekeeping-hive-walkthrough-long.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
+                            <div class="relative h-52 overflow-hidden bg-charcoal shrink-0 cursor-pointer" onclick="openVideoModal('https://player.vimeo.com/video/1239306280', 'Full Beekeeping Walkthrough & On-Site Hive Care')">
+                                
+                                <!-- Thumbnail / Poster Image representing the video -->
+                                <img src="media/on-site-beekeeping-hive-walkthrough-long.jpg" 
+                                    alt="Full Beekeeping Walkthrough" 
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                
+                                <!-- Play Button Overlay -->
+                                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+                                    <div class="w-14 h-14 rounded-full bg-amber-500 text-charcoal flex items-center justify-center text-xl shadow-xl transform group-hover:scale-110 transition-transform">
+                                        <i class="fa-solid fa-play ml-1"></i>
+                                    </div>
+                                </div>
+
+                                <!-- Badges -->
                                 <span class="absolute top-3 left-3 bg-blue-600 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow pointer-events-none z-10 flex items-center space-x-1">
                                     <i class="fa-solid fa-video"></i>
                                     <span>Video</span>
@@ -589,6 +600,7 @@
                                     <span>Long Video</span>
                                 </span>
                             </div>
+                            
                             <div class="p-5 flex flex-col justify-between flex-grow">
                                 <h3 class="font-serif font-bold text-sm sm:text-base text-charcoal dark:text-gray-100 leading-snug">Full Beekeeping Walkthrough & On-Site Hive Care</h3>
                                 <a href="https://www.facebook.com/people/Backyard-Honey/61592085643779/" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center mt-3">
@@ -681,14 +693,14 @@
             </div>
         </section>
 
-        <!-- Fullscreen Image Modal (Lightbox) -->
-        <div id="image-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4" onclick="closeLightbox()">
-            <div class="relative max-w-4xl max-h-[90vh] bg-white dark:bg-darkcard rounded-3xl p-3 shadow-2xl overflow-hidden flex flex-col items-center" onclick="event.stopPropagation()">
-                <button type="button" class="absolute top-4 right-4 text-charcoal dark:text-white bg-amber-100 dark:bg-darkborder hover:bg-amber-200 p-2.5 rounded-full shadow z-10 transition-colors" onclick="closeLightbox()">
+        <!-- Fullscreen Video Modal (Lightbox) -->
+        <div id="video-modal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4" onclick="closeVideoModal()">
+            <div class="relative w-full max-w-4xl bg-black rounded-3xl p-2 shadow-2xl overflow-hidden flex flex-col items-center aspect-video" onclick="event.stopPropagation()">
+                <button type="button" class="absolute top-4 right-4 text-white bg-charcoal/80 hover:bg-amber-500 hover:text-charcoal p-2.5 rounded-full shadow z-20 transition-colors" onclick="closeVideoModal()">
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
-                <img id="modal-img" src="" alt="" class="max-h-[75vh] w-auto object-contain rounded-2xl">
-                <p id="modal-caption" class="font-serif font-bold text-sm sm:text-base text-charcoal dark:text-gray-100 mt-3 text-center px-4 mb-1"></p>
+                <iframe id="modal-video-frame" src="" class="w-full h-full rounded-2xl" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                <p id="modal-video-caption" class="font-serif font-bold text-sm sm:text-base text-white mt-3 text-center px-4 mb-1"></p>
             </div>
         </div>
 
@@ -968,6 +980,29 @@
 
             modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden'; // prevent page scrolling while modal is open
+        }
+
+        // 9. OPEN & CLOSE VIDEO LIGHTBOX MODAL
+        function openVideoModal(videoUrl, captionText) {
+            const modal = document.getElementById('video-modal');
+            const videoFrame = document.getElementById('modal-video-frame');
+            const videoCaption = document.getElementById('modal-video-caption');
+            
+            // Add autoplay=1 so it plays automatically when opened in the modal
+            videoFrame.src = videoUrl + '?autoplay=1';
+            videoCaption.textContent = captionText;
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // prevent background scrolling
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('video-modal');
+            const videoFrame = document.getElementById('modal-video-frame');
+            
+            // Clear the source so the video stops playing when closed
+            videoFrame.src = '';
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
         }
 
         function closeLightbox() {
