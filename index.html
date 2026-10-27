@@ -79,36 +79,28 @@
             background: linear-gradient(135deg, rgba(10,10,10,0.92) 0%, rgba(18,18,18,0.88) 100%);
         }
         /* Custom Gallery Scrollbar Styling */
-        /* WebKit browsers (Chrome, Edge, Safari, Opera) */
         .gallery-scrollbar::-webkit-scrollbar {
             width: 8px;
         }
-
         .gallery-scrollbar::-webkit-scrollbar-track {
-            background: rgba(254, 243, 199, 0.5); /* Soft amber tint */
+            background: rgba(254, 243, 199, 0.5);
             border-radius: 9999px;
         }
-
         .dark .gallery-scrollbar::-webkit-scrollbar-track {
-            background: rgba(30, 30, 30, 0.8); /* Dark background matching cards */
+            background: rgba(30, 30, 30, 0.8);
             border-radius: 9999px;
         }
-
         .gallery-scrollbar::-webkit-scrollbar-thumb {
-            background: #f59e0b; /* Amber gold handle */
+            background: #f59e0b;
             border-radius: 9999px;
         }
-
         .gallery-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #d97706; /* Darker amber on hover */
+            background: #d97706;
         }
-
-        /* Firefox Support */
         .gallery-scrollbar {
             scrollbar-width: thin;
             scrollbar-color: #f59e0b rgba(254, 243, 199, 0.5);
         }
-
         .dark .gallery-scrollbar {
             scrollbar-color: #f59e0b rgba(30, 30, 30, 0.8);
         }
@@ -507,8 +499,7 @@
             </div>
         </section>
 
-
-        <!-- Photo & Video Gallery Showcase (Self-Contained Scroll Box + Click to Enlarge) -->
+        <!-- Photo & Video Gallery Showcase -->
         <section id="gallery" class="py-20 bg-hexagon-pattern border-t border-amber-200 dark:border-darkborder">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-12">
@@ -517,16 +508,15 @@
                     </span>
                     <h2 class="font-serif text-3xl sm:text-5xl font-extrabold text-charcoal dark:text-gray-100 mt-3 mb-4">Backyard Honey Gallery</h2>
                     <p class="text-charcoal/70 dark:text-gray-300 text-base sm:text-lg">
-                        Explore our latest photos and videos. Click any photo to view full size!
+                        Explore our latest photos and videos. Tap any photo to view full size!
                     </p>
                 </div>
 
-                    <!-- Scrollable Gallery Container -->
-                    <div class="max-h-[36rem] overflow-y-auto p-3 sm:p-4 rounded-3xl border border-amber-200/80 dark:border-darkborder bg-cream/50 dark:bg-darkbg/50 backdrop-blur-sm shadow-inner gallery-scrollbar">
+                <!-- Scrollable Gallery Container -->
+                <div class="max-h-[36rem] overflow-y-auto p-3 sm:p-4 rounded-3xl border border-amber-200/80 dark:border-darkborder bg-cream/50 dark:bg-darkbg/50 backdrop-blur-sm shadow-inner gallery-scrollbar">
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         
-
-                        <!-- Native Short Video -->
+                        <!-- Video Item 1 -->
                         <div class="group relative rounded-3xl overflow-hidden shadow-lg border border-amber-200 dark:border-darkborder bg-white dark:bg-darkcard min-h-[22rem] h-auto flex flex-col justify-between">
                             <div class="relative h-52 overflow-hidden bg-charcoal shrink-0">
                                 <video controls preload="metadata" class="w-full h-full object-cover">
@@ -550,7 +540,7 @@
                             </div>
                         </div>   
 
-                        <!-- Native Short Video -->
+                        <!-- Video Item 2 -->
                         <div class="group relative rounded-3xl overflow-hidden shadow-lg border border-amber-200 dark:border-darkborder bg-white dark:bg-darkcard min-h-[22rem] h-auto flex flex-col justify-between">
                             <div class="relative h-52 overflow-hidden bg-charcoal shrink-0">
                                 <video controls preload="metadata" class="w-full h-full object-cover">
@@ -574,7 +564,7 @@
                             </div>
                         </div>
 
-                        <!-- Native Short Video -->
+                        <!-- Video Item 3 -->
                         <div class="group relative rounded-3xl overflow-hidden shadow-lg border border-amber-200 dark:border-darkborder bg-white dark:bg-darkcard min-h-[22rem] h-auto flex flex-col justify-between">
                             <div class="relative h-52 overflow-hidden bg-charcoal shrink-0">
                                 <video controls preload="metadata" class="w-full h-full object-cover">
@@ -598,24 +588,19 @@
                             </div>
                         </div>    
 
-                        <!-- Native Long Video -->
-                        <!-- Native Long Video (Lightbox Modal Trigger) -->
+                        <!-- Vimeo Long Video Modal Trigger Card -->
                         <div class="group relative rounded-3xl overflow-hidden shadow-lg border border-amber-200 dark:border-darkborder bg-white dark:bg-darkcard min-h-[22rem] h-auto flex flex-col justify-between">
-                            <div class="relative h-52 overflow-hidden bg-charcoal shrink-0 cursor-pointer" onclick="openVideoModal('https://player.vimeo.com/video/1239306280', 'Full Beekeeping Walkthrough & On-Site Hive Care')">
-                                
-                                <!-- Thumbnail / Poster Image representing the video -->
+                            <div class="relative h-52 overflow-hidden bg-charcoal shrink-0 cursor-pointer active:scale-98 transition-transform" onclick="openVideoModal('https://player.vimeo.com/video/1239306280', 'Full Beekeeping Walkthrough & On-Site Hive Care')">
                                 <img src="media/on-site-beekeeping-hive-walkthrough-long.jpg" 
                                     alt="Full Beekeeping Walkthrough" 
                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                                 
-                                <!-- Play Button Overlay -->
                                 <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors flex items-center justify-center">
                                     <div class="w-14 h-14 rounded-full bg-amber-500 text-charcoal flex items-center justify-center text-xl shadow-xl transform group-hover:scale-110 transition-transform">
                                         <i class="fa-solid fa-play ml-1"></i>
                                     </div>
                                 </div>
 
-                                <!-- Badges -->
                                 <span class="absolute top-3 left-3 bg-blue-600 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow pointer-events-none z-10 flex items-center space-x-1">
                                     <i class="fa-solid fa-video"></i>
                                     <span>Video</span>
@@ -634,19 +619,43 @@
                             </div>
                         </div>
 
-                        <!-- Photo Post 1 -->
+                        <!-- Photo Card 1 -->
                         <div class="group relative rounded-3xl overflow-hidden shadow-lg border border-amber-200 dark:border-darkborder bg-white dark:bg-darkcard min-h-[22rem] h-auto flex flex-col justify-between">
-                            <div class="relative h-52 overflow-hidden bg-charcoal/5 dark:bg-black/20 shrink-0 cursor-pointer" onclick="openLightbox('media/pure-honey-advertisement-poster.jpg', 'Backyards Pure Honey Advert')">
+                            <div class="relative h-52 overflow-hidden bg-charcoal/5 dark:bg-black/20 shrink-0 cursor-pointer active:scale-98 transition-transform" onclick="openLightbox('media/full-set-of-canldes.jpg', 'Full Bees wax candle set')">
+                                <img src="media/full-set-of-canldes.jpg" 
+                                     alt="Full Bees wax candle set" 
+                                     class="w-full h-full object-contain p-1 group-hover:scale-105 transition-transform duration-300"
+                                     onerror="this.src='media/fallbackerror.jpg'">
+                                <span class="absolute top-3 left-3 bg-amber-500 text-charcoal text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow pointer-events-none">
+                                    <i class="fa-solid fa-camera mr-1"></i> Photo
+                                </span>
+                                <div class="absolute inset-0 bg-black/30 sm:bg-black/40 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                                    <span class="bg-white/90 text-charcoal text-xs font-bold px-3 py-1.5 rounded-full shadow-md flex items-center">
+                                        <i class="fa-solid fa-magnifying-glass-plus mr-1.5 text-amber-600"></i> Tap to expand
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-5 flex flex-col justify-between flex-grow">
+                                <h3 class="font-serif font-bold text-sm sm:text-base text-charcoal dark:text-gray-100 leading-snug">Full Bee's wax candle set</h3>
+                                <a href="https://www.facebook.com/people/Backyard-Honey/61592085643779/" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center mt-3">
+                                    <span>View on Facebook</span> <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Photo Card 2 -->
+                        <div class="group relative rounded-3xl overflow-hidden shadow-lg border border-amber-200 dark:border-darkborder bg-white dark:bg-darkcard min-h-[22rem] h-auto flex flex-col justify-between">
+                            <div class="relative h-52 overflow-hidden bg-charcoal/5 dark:bg-black/20 shrink-0 cursor-pointer active:scale-98 transition-transform" onclick="openLightbox('media/pure-honey-advertisement-poster.jpg', 'Backyards Pure Honey Advert')">
                                 <img src="media/pure-honey-advertisement-poster.jpg" 
                                      alt="Backyards Pure Honey Advert" 
                                      class="w-full h-full object-contain p-1 group-hover:scale-105 transition-transform duration-300"
                                      onerror="this.src='media/fallbackerror.jpg'">
-                                <span class="absolute top-3 left-3 bg-amber-500 text-charcoal text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow">
+                                <span class="absolute top-3 left-3 bg-amber-500 text-charcoal text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow pointer-events-none">
                                     <i class="fa-solid fa-camera mr-1"></i> Photo
                                 </span>
-                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                                <div class="absolute inset-0 bg-black/30 sm:bg-black/40 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
                                     <span class="bg-white/90 text-charcoal text-xs font-bold px-3 py-1.5 rounded-full shadow-md flex items-center">
-                                        <i class="fa-solid fa-magnifying-glass-plus mr-1.5 text-amber-600"></i> Click to expand
+                                        <i class="fa-solid fa-magnifying-glass-plus mr-1.5 text-amber-600"></i> Tap to expand
                                     </span>
                                 </div>
                             </div>
@@ -658,19 +667,19 @@
                             </div>
                         </div>
 
-                        <!-- Photo Post 2 -->
+                        <!-- Photo Card 3 -->
                         <div class="group relative rounded-3xl overflow-hidden shadow-lg border border-amber-200 dark:border-darkborder bg-white dark:bg-darkcard min-h-[22rem] h-auto flex flex-col justify-between">
-                            <div class="relative h-52 overflow-hidden bg-charcoal/5 dark:bg-black/20 shrink-0 cursor-pointer" onclick="openLightbox('media/handcrafted-beeswax-candles-showcase.jpg', 'A Few of Our New Candles')">
+                            <div class="relative h-52 overflow-hidden bg-charcoal/5 dark:bg-black/20 shrink-0 cursor-pointer active:scale-98 transition-transform" onclick="openLightbox('media/handcrafted-beeswax-candles-showcase.jpg', 'A Few of Our New Candles')">
                                 <img src="media/handcrafted-beeswax-candles-showcase.jpg" 
                                      alt="A Few of Our New Candles" 
                                      class="w-full h-full object-contain p-1 group-hover:scale-105 transition-transform duration-300"
                                      onerror="this.src='media/fallbackerror.jpg'">
-                                <span class="absolute top-3 left-3 bg-amber-500 text-charcoal text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow">
+                                <span class="absolute top-3 left-3 bg-amber-500 text-charcoal text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow pointer-events-none">
                                     <i class="fa-solid fa-camera mr-1"></i> Photo
                                 </span>
-                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                                <div class="absolute inset-0 bg-black/30 sm:bg-black/40 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
                                     <span class="bg-white/90 text-charcoal text-xs font-bold px-3 py-1.5 rounded-full shadow-md flex items-center">
-                                        <i class="fa-solid fa-magnifying-glass-plus mr-1.5 text-amber-600"></i> Click to expand
+                                        <i class="fa-solid fa-magnifying-glass-plus mr-1.5 text-amber-600"></i> Tap to expand
                                     </span>
                                 </div>
                             </div>
@@ -682,19 +691,19 @@
                             </div>
                         </div>
 
-                        <!-- Photo Post 3 -->
+                        <!-- Photo Card 4 -->
                         <div class="group relative rounded-3xl overflow-hidden shadow-lg border border-amber-200 dark:border-darkborder bg-white dark:bg-darkcard min-h-[22rem] h-auto flex flex-col justify-between">
-                            <div class="relative h-52 overflow-hidden bg-charcoal/5 dark:bg-black/20 shrink-0 cursor-pointer" onclick="openLightbox('media/beeswax-candles-trio-showcase.jpg', 'Handcrafted Beeswax Candles Trio')">
+                            <div class="relative h-52 overflow-hidden bg-charcoal/5 dark:bg-black/20 shrink-0 cursor-pointer active:scale-98 transition-transform" onclick="openLightbox('media/beeswax-candles-trio-showcase.jpg', 'Handcrafted Beeswax Candles Trio')">
                                 <img src="media/beeswax-candles-trio-showcase.jpg" 
                                      alt="Handcrafted Beeswax Candles Trio" 
                                      class="w-full h-full object-contain p-1 group-hover:scale-105 transition-transform duration-300"
                                      onerror="this.src='media/fallbackerror.jpg'">
-                                <span class="absolute top-3 left-3 bg-amber-500 text-charcoal text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow">
+                                <span class="absolute top-3 left-3 bg-amber-500 text-charcoal text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow pointer-events-none">
                                     <i class="fa-solid fa-camera mr-1"></i> Photo
                                 </span>
-                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                                <div class="absolute inset-0 bg-black/30 sm:bg-black/40 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
                                     <span class="bg-white/90 text-charcoal text-xs font-bold px-3 py-1.5 rounded-full shadow-md flex items-center">
-                                        <i class="fa-solid fa-magnifying-glass-plus mr-1.5 text-amber-600"></i> Click to expand
+                                        <i class="fa-solid fa-magnifying-glass-plus mr-1.5 text-amber-600"></i> Tap to expand
                                     </span>
                                 </div>
                             </div>
@@ -717,6 +726,17 @@
                 </div>
             </div>
         </section>
+
+        <!-- Fullscreen Image Modal (Lightbox) -->
+        <div id="image-modal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4" onclick="closeLightbox()">
+            <div class="relative max-w-4xl max-h-[90vh] bg-white dark:bg-darkcard rounded-3xl p-3 shadow-2xl overflow-hidden flex flex-col items-center" onclick="event.stopPropagation()">
+                <button type="button" class="absolute top-4 right-4 text-charcoal dark:text-white bg-amber-100 dark:bg-darkborder hover:bg-amber-200 p-2.5 rounded-full shadow z-10 transition-colors" onclick="closeLightbox()">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+                <img id="modal-img" src="" alt="" class="max-h-[75vh] w-auto object-contain rounded-2xl">
+                <p id="modal-caption" class="font-serif font-bold text-sm sm:text-base text-charcoal dark:text-gray-100 mt-3 text-center px-4 mb-1"></p>
+            </div>
+        </div>
 
         <!-- Fullscreen Video Modal (Lightbox) -->
         <div id="video-modal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4" onclick="closeVideoModal()">
@@ -845,7 +865,7 @@
             const seasonalText = document.getElementById('seasonal-text');
             if (!seasonalText) return;
 
-            const month = new Date().getMonth(); // 0 = Jan, 11 = Dec
+            const month = new Date().getMonth();
             let harvestName = "Spring Blossom Harvest";
 
             if (month >= 2 && month <= 4) {
@@ -862,11 +882,11 @@
         }
         updateSeasonalBadge();
 
-        // 2. ANNOUNCEMENT BAR SOLD OUT
+        // 2. ANNOUNCEMENT BAR
         const ANNOUNCEMENT_CONFIG = {
             text: "⚠️ CURRENTLY SOLD OUT • Next Fresh Honey Harvest Coming Soon!",
-            backgroundColor: '#dc2626', // Red
-            textColor: '#ffffff',       // White
+            backgroundColor: '#dc2626',
+            textColor: '#ffffff',
             iconClass: 'fa-ban'
         };
 
@@ -881,7 +901,7 @@
             annIcon.className = `fa-solid ${ANNOUNCEMENT_CONFIG.iconClass}`;
         }
 
-        // 3. LIGHT / DARK MODE TOGGLE & PERSISTENCE
+        // 3. LIGHT / DARK MODE
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeToggleIcon = document.getElementById('theme-toggle-icon');
 
@@ -906,54 +926,7 @@
             }
         });
 
-        // 4. ONE-CLICK COPY LINK
-        const copyBtn = document.getElementById('copy-fb-link-btn');
-        const copyIcon = document.getElementById('copy-icon');
-        const copyText = document.getElementById('copy-text');
-        const fbUrl = "https://www.facebook.com/share/1C35BqBN7u/?mibextid=wwXIfr";
-
-        if (copyBtn) {
-            copyBtn.addEventListener('click', () => {
-                navigator.clipboard.writeText(fbUrl).then(() => {
-                    copyIcon.className = "fa-solid fa-check mr-2 text-lg text-green-600";
-                    copyText.textContent = "Copied to Clipboard!";
-                    setTimeout(() => {
-                        copyIcon.className = "fa-solid fa-copy mr-2 text-lg text-blue-600";
-                        copyText.textContent = "Copy Page Link";
-                    }, 2500);
-                }).catch(() => {
-                    alert("Link copied: " + fbUrl);
-                });
-            });
-        }
-
-        // 5. PAIRINGS / USAGE FILTER
-        const pairingTabs = document.querySelectorAll('.pairing-tab');
-        const pairingCards = document.querySelectorAll('.pairing-card');
-
-        pairingTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                pairingTabs.forEach(t => {
-                    t.classList.remove('active', 'bg-amber-500', 'text-charcoal', 'shadow-md', 'border-amber-400');
-                    t.classList.add('bg-white', 'dark:bg-darkcard', 'text-charcoal', 'dark:text-gray-200', 'border-amber-200', 'dark:border-darkborder');
-                });
-
-                tab.classList.add('active', 'bg-amber-500', 'text-charcoal', 'shadow-md', 'border-amber-400');
-                tab.classList.remove('bg-white', 'dark:bg-darkcard', 'text-charcoal', 'dark:text-gray-200', 'border-amber-200', 'dark:border-darkborder');
-
-                const category = tab.getAttribute('data-category');
-
-                pairingCards.forEach(card => {
-                    if (category === 'all' || card.getAttribute('data-category') === category) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        // 6. MOBILE MENU TOGGLE
+        // 4. MOBILE MENU
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const menuIcon = document.getElementById('menu-icon');
@@ -975,7 +948,7 @@
             });
         });
 
-        // 7. FAQ ACCORDIONS
+        // 5. FAQ ACCORDIONS
         const faqButtons = document.querySelectorAll('.faq-btn');
         faqButtons.forEach(button => {
             button.addEventListener('click', () => {
@@ -986,54 +959,53 @@
             });
         });
 
-        // 8. FULLSCREEN IMAGE LIGHTBOX WITH ERROR FALLBACK
+        // 6. FULLSCREEN IMAGE LIGHTBOX
         function openLightbox(imgSrc, captionText) {
             const modal = document.getElementById('image-modal');
             const modalImg = document.getElementById('modal-img');
             const modalCaption = document.getElementById('modal-caption');
             
-            // Clear any previous error states and set source
             modalImg.onerror = null;
             modalImg.src = imgSrc;
             modalCaption.textContent = captionText;
 
-            // If the image fails to load, swap to the fallback error image and show warning text
             modalImg.onerror = function() {
-                modalImg.src = 'media/fallbackerror.jpg'; // Make sure this matches your saved file name in the media folder!
+                modalImg.src = 'media/fallbackerror.jpg';
                 modalCaption.innerHTML = captionText + '<br><span class="text-red-600 dark:text-red-400 font-semibold text-xs mt-1 block">ERROR: Please report to website designer</span>';
             };
 
             modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // prevent page scrolling while modal is open
+            document.body.style.overflow = 'hidden';
         }
 
-        // 9. OPEN & CLOSE VIDEO LIGHTBOX MODAL
+        function closeLightbox() {
+            const modal = document.getElementById('image-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // 7. FULLSCREEN VIDEO LIGHTBOX
         function openVideoModal(videoUrl, captionText) {
             const modal = document.getElementById('video-modal');
             const videoFrame = document.getElementById('modal-video-frame');
             const videoCaption = document.getElementById('modal-video-caption');
             
-            // Add autoplay=1 so it plays automatically when opened in the modal
             videoFrame.src = videoUrl + '?autoplay=1';
             videoCaption.textContent = captionText;
             modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // prevent background scrolling
+            document.body.style.overflow = 'hidden';
         }
 
         function closeVideoModal() {
             const modal = document.getElementById('video-modal');
             const videoFrame = document.getElementById('modal-video-frame');
-            
-            // Clear the source so the video stops playing when closed
-            videoFrame.src = '';
-            modal.classList.add('hidden');
-            document.body.style.overflow = '';
-        }
-
-        function closeLightbox() {
-            const modal = document.getElementById('image-modal');
-            modal.classList.add('hidden');
-            document.body.style.overflow = '';
+            if (modal && videoFrame) {
+                videoFrame.src = '';
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
         }
     </script>
 </body>
